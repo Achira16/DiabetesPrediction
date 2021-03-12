@@ -1,0 +1,36 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #990202;">Diabetes Prediction</h1>
+        <br>
+        <h3 style="color: #02084f;">Please select from the below options to predict whether you are diabetic or not</h3>
+        <br>
+    </div>
+    <div id="container" class="container">
+        <form method="post">{%csrf_token%}
+            <input type="number" name="no_of_times_pregnant" id="no_of_times_pregnant" required value="" min="0" step="1" placeholder="No of times pregnant"><br><br>
+            <input type="number" name="plasma_gluc_conc" id="plasma_gluc_conc" required value="" min="10" step="1" placeholder="Plasma Glucose Concentration"><br><br>
+            <input type="number" name="bp" id="bp" required value="" step="1" min="10" placeholder="Diastolic Blood Pressure (mm Hg)"><br><br>
+            <input type="number" name="skin_fold" id="skin_fold" required value="" min="1" step="1" placeholder="Triceps skin fold thickness (mm)"><br><br>
+            <input type="number" name="insulin" id="insulin" required value="" min="1" step="1" placeholder="2-Hour serum insulin (mu U/ml)"><br><br>
+            <input type="number" name="BMI" id="BMI" required value="" step="any" min="10" placeholder="Body mass index (weight in kg/(height in m)^2)"><br><br>
+            <input type="number" name="ped_func" id="ped_func" required value="" min="0.0000001" step="any" placeholder="Diabetes pedigree function"><br><br>
+            <input type="number" name="age" id="age" required value="" step="1" min="21" placeholder="Age (years)"><br><br>
+            <input type="submit" value="submit" name="submit">
+        </form>
+        {% if d%}
+        {%else%}
+        <label for="diabetic">Diabetic patient or not:</label>
+        <input type="text" name="" value="{{ans}}" disabled>
+        {%endif%}
+    </div>
+</body>
+</html>
